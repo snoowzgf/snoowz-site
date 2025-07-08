@@ -7,12 +7,10 @@
   <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
-  <!-- Écran d'accueil -->
   <div id="start-screen">
     <div class="start-text">Click to enter</div>
   </div>
 
-  <!-- Vidéo et contenu -->
   <video id="background-video" loop playsinline>
     <source src="background.mp4" type="video/mp4" />
     Ton navigateur ne supporte pas la vidéo.
@@ -52,10 +50,8 @@
     const video = document.getElementById("background-video");
 
     startScreen.addEventListener("click", () => {
-      // Cache l'écran d'accueil
       startScreen.style.display = "none";
 
-      // Active le son et lance la vidéo
       video.muted = false;
       video.play();
     });
@@ -66,8 +62,8 @@
 
   container.addEventListener('mousemove', (e) => {
     const rect = container.getBoundingClientRect();
-    const relX = (e.clientX - rect.left) / rect.width;   // 0 à 1
-    const relY = (e.clientY - rect.top) / rect.height;   // 0 à 1
+    const relX = (e.clientX - rect.left) / rect.width;
+    const relY = (e.clientY - rect.top) / rect.height;
 
     // Calcul rotation de -maxTilt à +maxTilt
     const rotateY = (relX - 0.5) * 2 * maxTilt;
@@ -84,7 +80,7 @@
 </script>
 <script>
   const phrase = "Learning c++ for cheats development";
-  const typingSpeed = 100; // ms par lettre
+  const typingSpeed = 100;
   const erasingSpeed = 50;
   const delayBetween = 1500;
 
@@ -137,7 +133,6 @@
       }
       document.title = originalTitle.slice(0, index) || " ";
 
-      // Relancer après 150ms (plus fluide)
       setTimeout(animateTitle, 150);
     }
 
