@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snoowz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- Écran d'accueil -->
+  <div id="start-screen">
+    <div class="start-text">Click to enter</div>
+  </div>
+
+  <!-- Vidéo et contenu -->
+  <video id="background-video" loop playsinline>
+    <source src="background.mp4" type="video/mp4" />
+    Ton navigateur ne supporte pas la vidéo.
+  </video>
+
+  <div class="overlay">
+    <div class="container">
+      <img src="avatar.webp" alt="Avatar 1style" class="avatar" />
+      <h1>Snoowz</h1>
+      <div id="typing-text" class="typing"></div>
+      <div id="location" class="location">📍 94, France</div>
+      <div class="discord-invite-card">
+      <img
+      src="https://cdn.discordapp.com/icons/1359904113961472171/a_2ee70063094ba2a0a330d829266b82bf.gif?size=1024"
+      alt="Discord"
+      class="discord-logo"
+    />
+      <div class="discord-info">
+      <div class="discord-server-name">Seresty RP #COMEBACK</div>
+      <div class="discord-members">72 membres</div>
+    </div>
+    <a
+        href="https://discord.gg/3DzS6npAwX"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="discord-join-btn"
+    >
+        Rejoindre
+    </a>
+    </div>
+      <p>By snoowz94z. on discord.</p>
+    </div>
+  </div>
+
+  <script>
+    const startScreen = document.getElementById("start-screen");
+    const video = document.getElementById("background-video");
+
+    startScreen.addEventListener("click", () => {
+      // Cache l'écran d'accueil
+      startScreen.style.display = "none";
+
+      // Active le son et lance la vidéo
+      video.muted = false;
+      video.play();
+    });
+  </script>
+<script>
+  const container = document.querySelector('.container');
+  const maxTilt = 15;
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width;   // 0 à 1
+    const relY = (e.clientY - rect.top) / rect.height;   // 0 à 1
+
+    // Calcul rotation de -maxTilt à +maxTilt
+    const rotateY = (relX - 0.5) * 2 * maxTilt;
+    const rotateX = (0.5 - relY) * 2 * maxTilt;
+
+    container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    container.style.transition = 'transform 0.05s ease-out';
+  });
+
+  container.addEventListener('mouseleave', () => {
+    container.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    container.style.transition = 'transform 0.3s ease-out';
+  });
+</script>
+<script>
+  const phrase = "Learning c++ for cheats development";
+  const typingSpeed = 100; // ms par lettre
+  const erasingSpeed = 50;
+  const delayBetween = 1500;
+
+  let charIndex = 0;
+  const typingElement = document.getElementById('typing-text');
+
+  function type() {
+    if (charIndex < phrase.length) {
+      typingElement.textContent += phrase.charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingSpeed);
+    } else {
+      setTimeout(erase, delayBetween);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = phrase.substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, erasingSpeed);
+    } else {
+      setTimeout(type, typingSpeed);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(type, delayBetween);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const originalTitle = document.title;
+    let index = originalTitle.length;
+    let removing = true;
+
+    function animateTitle() {
+      if (removing) {
+        index--;
+        if (index < 0) {
+          removing = false;
+          index = 0;
+        }
+      } else {
+        index++;
+        if (index > originalTitle.length) {
+          removing = true;
+          index = originalTitle.length;
+        }
+      }
+      document.title = originalTitle.slice(0, index) || " ";
+
+      // Relancer après 150ms (plus fluide)
+      setTimeout(animateTitle, 150);
+    }
+
+    animateTitle();
+  });
+</script>
+
+
+</body>
+</html>

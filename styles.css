@@ -1,0 +1,189 @@
+/* Reset de base */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Écran d'accueil plein écran */
+#start-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Texte d'accueil */
+.start-text {
+  color: white;
+  font-size: 2.5em;
+  user-select: none;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Vidéo fond */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Overlay non flouté */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Carte floutée */
+.container {
+  background: rgba(20, 20, 20, 0.2); /* fond sombre et un peu opaque */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 30px;
+  padding: 50px 70px;
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: white;
+  max-width: 500px;
+  width: 90vw;
+  margin: auto;
+  user-select: none;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+  border: 2px solid white;
+  box-shadow: 
+    0 8px 32px 0 rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.1),
+    0 0 10px 2px white;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  margin: 0 auto 25px auto;
+  display: block;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 0.8em;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+.typing {
+  font-size: 1.5em;
+  color: #ddd;
+  height: 30px; /* éviter saut de mise en page */
+  margin-top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #ddd; /* curseur */
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #ddd; }
+}
+
+.location {
+  margin-top: 25px;
+  font-size: 1em;
+  color: #ccc;
+  opacity: 0.7;
+  font-style: italic;
+  user-select: none;
+  margin-bottom: 25px;
+}
+
+.discord-invite-card {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(88, 101, 242, 0.1);
+  padding: 12px 20px 12px 40px; /* plus de padding à gauche */
+  border-radius: 16px;
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+  gap: 16px;
+  user-select: none;
+}
+
+.discord-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: white;
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.discord-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #5865f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.discord-server-name {
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 4px;
+}
+
+.discord-members {
+  font-size: 0.85em;
+  color: #7289da;
+}
+
+.discord-join-btn {
+  background-color: #5865f2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95em;
+  box-shadow: 0 4px 10px rgba(88, 101, 242, 0.6);
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.discord-join-btn:hover {
+  background-color: #4752c4;
+}
