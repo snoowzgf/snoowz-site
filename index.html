@@ -143,7 +143,17 @@
     animateTitle();
   });
 </script>
+<script>
+  const video = document.getElementById("background-video");
+  const volumeSlider = document.getElementById("volumeSlider");
 
+  // Au cas où tu veux démarrer avec du son
+  video.muted = false;
+
+  volumeSlider.addEventListener("input", () => {
+    video.volume = volumeSlider.value;
+  });
+</script>
 
 </body>
 </html>
